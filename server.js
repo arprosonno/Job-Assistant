@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/jobportal', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/jobportal', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
