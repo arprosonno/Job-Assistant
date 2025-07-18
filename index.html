@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Board App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Authentication -->
+  <div id="auth-container">
+    <h2 id="auth-title">Sign Up</h2>
+    <input type="email" id="auth-email" placeholder="Email">
+    <input type="password" id="auth-password" placeholder="Password">
+    <button id="auth-submit-btn">Sign Up</button>
+    <p id="toggle-auth">Already have an account? <a href="#">Log In</a></p>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" style="display:none;">
+    <h2>Welcome!</h2>
+    <button id="post-job-page-btn">Post a Job</button>
+    <button id="see-jobs-page-btn">See Posted Jobs</button>
+    <button class="logout-btn">Logout</button>
+  </div>
+
+  <!-- Post Job Page -->
+  <div id="post-job-page" style="display:none;">
+    <h2>Post a Job</h2>
+    <button id="switch-to-see-jobs">See Posted Jobs</button>
+    <button class="logout-btn">Logout</button>
+    <input type="text" id="job-title" placeholder="Job Title">
+    <input type="text" id="company-name" placeholder="Company Name">
+    <input type="text" id="requirement" placeholder="Requirement">
+    <input type="text" id="salary" placeholder="Salary">
+    <input type="text" id="contact" placeholder="Contact Number">
+    <button id="post-job-btn">Post Job</button>
+  </div>
+
+  <!-- See Jobs Page -->
+  <div id="see-jobs-page" style="display:none;">
+    <h2>Posted Jobs</h2>
+    <button id="switch-to-post-job">Post a Job</button>
+    <button class="logout-btn">Logout</button>
+    <ul id="jobs-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
