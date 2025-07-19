@@ -1,6 +1,6 @@
 // === AUTH ===
 async function register(email, password) {
-  const response = await fetch('http://localhost:5000/register', {
+  const response = await fetch('https://job-assistant-g3e3.onrender.com/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
@@ -10,7 +10,7 @@ async function register(email, password) {
 }
 
 async function login(email, password) {
-  const response = await fetch('http://localhost:5000/login', {
+  const response = await fetch('https://job-assistant-g3e3.onrender.com/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
@@ -33,7 +33,7 @@ async function postJob(title, company, requirement, salary, contact) {
     return;
   }
 
-  const response = await fetch('http://localhost:5000/jobs', {
+  const response = await fetch('https://job-assistant-g3e3.onrender.com/jobs', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userId, post: title, company, requirement, salary, contact })
@@ -43,7 +43,7 @@ async function postJob(title, company, requirement, salary, contact) {
 }
 
 async function loadJobs() {
-  const response = await fetch('http://localhost:5000/jobs');
+  const response = await fetch('https://job-assistant-g3e3.onrender.com/jobs');
   const jobs = await response.json();
 
   const list = document.getElementById('jobs-list');
@@ -62,7 +62,7 @@ async function loadJobs() {
 }
 
 async function deleteJob(jobId) {
-  const response = await fetch(`http://localhost:5000/jobs/${jobId}`, {
+  const response = await fetch(`https://job-assistant-g3e3.onrender.com/jobs/${jobId}`, {
     method: 'DELETE'
   });
   const data = await response.json();
@@ -151,3 +151,4 @@ if (localStorage.getItem('userId')) {
 } else {
   showAuthPage();
 }
+
