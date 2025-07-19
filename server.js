@@ -13,7 +13,6 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true
 });
 
-
 // User Schema
 const userSchema = new mongoose.Schema({
   email: String,
@@ -73,9 +72,21 @@ app.get('/jobs', async (req, res) => {
   res.json(jobs);
 });
 
-// Delete job
+// Secure DELETE job
 app.delete('/jobs/:id', async (req, res) => {
-  await Job.findByIdAndDelete(req.params.id);
+  const userId = req.body.userId;
+  const jobId = req.params.id;
+
+  const job = await Job.findById(jobId);
+  if (!job) {
+    return res.status(404).json({ message: 'Job not found' });
+  }
+
+  if (job.userId.toString() !== userId) {
+    return res.status(403).json({ message: 'Unauthorized: You can only delete your own jobs' });
+  }
+
+  await Job.findByIdAndDelete(jobId);
   res.json({ message: 'Job deleted successfully' });
 });
 
